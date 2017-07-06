@@ -1,4 +1,3 @@
 # Spotify-Basic
-Get the list of 20 songs from spotify. 
-Will work on VPN enable networks only. 
-Still under construction
+Get the list of 20 songs from spotify.
+Hear the trail for 30 seconds.
