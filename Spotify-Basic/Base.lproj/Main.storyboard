@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="cmp-qm-j8f">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -71,13 +71,14 @@
                             <constraint firstAttribute="trailing" secondItem="Puy-CJ-dRp" secondAttribute="trailing" id="wfB-z7-kpi"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="bH2-GT-yLb"/>
                     <connections>
                         <outlet property="tableView" destination="Puy-CJ-dRp" id="RtR-8G-hIi"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sHP-d3-5B7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="994" y="154"/>
+            <point key="canvasLocation" x="1932" y="153.37331334332833"/>
         </scene>
         <!--AudioVC-->
         <scene sceneID="CZp-Nn-K2K">
@@ -148,7 +149,25 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kOj-0D-iWW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1941.5999999999999" y="154.27286356821591"/>
+            <point key="canvasLocation" x="2880.8000000000002" y="154.27286356821591"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="uCO-tF-zRU">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="cmp-qm-j8f" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="C7n-Ov-Rir">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="1Ph-UL-cZK" kind="relationship" relationship="rootViewController" id="hFQ-Do-5uL"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DCo-gO-27B" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="992.79999999999995" y="153.37331334332833"/>
         </scene>
     </scenes>
 </document>

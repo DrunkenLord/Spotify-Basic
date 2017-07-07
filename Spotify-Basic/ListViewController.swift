@@ -9,12 +9,12 @@
 import UIKit
 import Alamofire
 
-struct post
-{
+struct post {
     let image : UIImage!
-    let name: String!
+    let name : String!
 }
 
+var albumArt : UIImage!
 
 class ListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
@@ -45,7 +45,7 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
     {
         
         let parameters = ["q":"Shawn Mendes","type":"track"]
-        let headers = ["Accept":"application/json", "Authorization":"Authorization: Bearer BQCUqf832HFULhwC7Hj3Fo9TxXY36y0il9YFXfdNZMMDwweT2MA4qf_SUDpX9IJqRf4TSnU6UnTK5O4qJBvYXiysO-OBKEcUGGymR8EEp-s6nlxfPYdCZDLVCfql1OV_xbwLO7_Gh_SkQ8gfYsH0AqsFuiDnFQwaSQAjDpivbKmGz6ckFXnBtcH3nBUs0hDGVezlxUjHJqTb9mC0YnHGAgyHvPR2Vrkhg2tB13yTBPN26Hq5Sf2X9ufQka9G9Olp_ONMr46OAEYkeUX39IfDt30Vk2roNeHRl0OJfvD2_ji4KnT-WBZNH1jZiBvmkZLssYg"]
+        let headers = ["Accept":"application/json", "Authorization":"Bearer BQA-I5IDq7_i50Jpz5qp8eMXqBoUKBFgNPI_B0Xr_F25TpHRlfn0c65IL_G63tNnfZIMELvdyzRv1SYuX9PasJRkJFqeTOZPfl923NCm1SuFrPB_xbk1UnT32YVc4M8_3Ud-4YKmWPBtVZMHpFVPA5l35cKhvgX9D1X7iXW15W0-Zokmvgqu5dXvDkRLPYtNAEXuH1UFwSo7YeFrGI8k4BbK5mnzwB_s-Q6fw72w8anFxFceoyWOMoO49BWo7NyRm6rdZaWSm3oPmqatn1TIw0P1rhQ1HKYzDyyOK5sEJUxFGoabQIRA4wCrbCbpB_kfp1o" ]
         Alamofire.request(url, method: .get, parameters: parameters, headers: headers).response(completionHandler:{
             
             response in
@@ -61,34 +61,38 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         do{
             var readAbleJSON = try JSONSerialization.jsonObject(with: JSONdata, options: .mutableContainers) as! JSONstandards
-            print(readAbleJSON)
             
             if let tracks =  readAbleJSON["tracks"] as? JSONstandards{
                 if let items = tracks["items"] as? [JSONstandards]{
                     for i in 0..<items.count{
                         let item = items[i]
                         let name = item["name"] as! String
-                        if let album = item["Album"] as? JSONstandards{
+                        if let album = item["album"] as? JSONstandards{
                             
                             if let images = album["images"] as? [JSONstandards]{
                                 let myImage = images[0]
                                 let myImageURL = URL(string: myImage["url"] as! String)
+                                
                                 let myImageData = NSData(contentsOf: myImageURL!)
                                 
                                 let mainImage = UIImage(data: myImageData as! Data)
                                 
-                                posts.append(post.init(image: mainImage, name: name))
-                                self.tableView.reloadData()
+                                albumArt = mainImage
                             }
                         }
+                        posts.append(post.init(image: albumArt, name: name))
+                        
+                        print(posts[0])
+                        self.tableView.reloadData()
                     }
                     
-                }}
+                }
+            }
         }
         catch{
             print(error)
         }
-    }
+    }  
     
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -101,17 +105,25 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
+        print(posts.count)
         return posts.count
+        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-        let mainImageView = cell.viewWithTag(2) as! UIImageView
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell")
+        let mainImageView = cell?.viewWithTag(2) as! UIImageView
         mainImageView.image = posts[indexPath.row].image
-        let mainLabel = cell.viewWithTag(1) as! UILabel
+        //print(posts[indexPath.row].image)
+        let mainLabel = cell?.viewWithTag(1) as! UILabel
         mainLabel.text = posts[indexPath.row].name
-        return cell
+        //print(posts[indexPath.row].name)
+        return cell!
         
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+            tableView.deselectRow(at: indexPath, animated: true)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -123,11 +135,17 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
         vc.mainSongTitle = posts[indexPath!].name
     }
     
+    override var prefersStatusBarHidden: Bool
+        {
+        
+        return true
+    }
     
+}
     
 
     
 
    
 
-}
+
