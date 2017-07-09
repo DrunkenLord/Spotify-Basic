@@ -71,7 +71,7 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
     {
         
         let parameters = ["type":"track"]
-        let headers = ["Accept":"application/json", "Authorization":"Bearer BQCGU8fdkpF154bWFKjuBGejDHK6icK7delaPZHlNKMG-cnv-jIoSLkmpKVHQFLac-agyP7SOyT3Ye8z2X6nP0Oy6piHyroILRcmktMJy4kUsEMW1HC8AF5Jbrg9HYcySVYKTGk1EoWEhtyDy8dVHCPUJkposx6VYinQhp9HiTPYpcvl6nXS8SrGKeLfnl7uIyiSLkscdCPiB8QhmUrW469X_UU0BsyB1N54UOimVs7Mde4xVCC9OeXpSqdGVQm2F8E-IgMcBwMXloL_NsnjUevZgRo_XLIBfQzKuFyMM0YIV6_8FTXcC11wkdIoXI8gzm8" ]
+        let headers = ["Accept":"application/json", "Authorization":"Bearer BQBCGnravt0LvrJt5kSbXQ4QNwvE68xZQ1K7ENk5O5x05NO3LcEQSNRFvzwQvuR_2-ge1ueVF40qU15YXHmsabAEi84xJ_yZp5S1G2UIui4z7TziNlYplSp-vYj6Am_I7gm-rxuI5gLd0v9c0GHlEatNBDXBwizS7ZoSisYCh7V9En7RkhpsmU2nwMq7ru6RmpMgIMNPemi2LnXqb6hXDhYmSxqc08OGFFI1AQXUvMB-7vO0WIAozvstBpTIjzyK0AcRNvmKrNrwipYgALn8a1H2zf2uSjkyIw7LgZRudKtva1Dq0n58KtvcpoM3Xf_zJXk" ]
         Alamofire.request(url, method: .get, parameters: parameters, headers: headers).response(completionHandler:{
             
             response in
@@ -91,7 +91,7 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
             if let expiredToken = readAbleJSON["error"] as? JSONstandards
             {
                 let optionMenu = UIAlertController(title: nil, message: "The Token has been expired. Contact developer.", preferredStyle: .actionSheet)
-                let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+                let cancelAction = UIAlertAction(title: "Got it!", style: .cancel, handler: nil)
                 optionMenu.addAction(cancelAction)
                 present(optionMenu, animated: true, completion: nil)
             }
