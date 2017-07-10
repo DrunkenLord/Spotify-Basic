@@ -90,7 +90,7 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
             //print(readAbleJSON)
             if let expiredToken = readAbleJSON["error"] as? JSONstandards
             {
-                let optionMenu = UIAlertController(title: nil, message: "The Token has been expired. Contact developer.", preferredStyle: .actionSheet)
+                let optionMenu = UIAlertController(title: nil, message: "The Token has been expired. Contact developer or post an issue on github!", preferredStyle: .actionSheet)
                 let cancelAction = UIAlertAction(title: "Got it!", style: .cancel, handler: nil)
                 optionMenu.addAction(cancelAction)
                 present(optionMenu, animated: true, completion: nil)
