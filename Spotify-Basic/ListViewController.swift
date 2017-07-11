@@ -71,7 +71,7 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
     {
         
         let parameters = ["type":"track"]
-        let headers = ["Accept":"application/json", "Authorization":"Bearer BQBCGnravt0LvrJt5kSbXQ4QNwvE68xZQ1K7ENk5O5x05NO3LcEQSNRFvzwQvuR_2-ge1ueVF40qU15YXHmsabAEi84xJ_yZp5S1G2UIui4z7TziNlYplSp-vYj6Am_I7gm-rxuI5gLd0v9c0GHlEatNBDXBwizS7ZoSisYCh7V9En7RkhpsmU2nwMq7ru6RmpMgIMNPemi2LnXqb6hXDhYmSxqc08OGFFI1AQXUvMB-7vO0WIAozvstBpTIjzyK0AcRNvmKrNrwipYgALn8a1H2zf2uSjkyIw7LgZRudKtva1Dq0n58KtvcpoM3Xf_zJXk" ]
+        let headers = ["Accept":"application/json", "Authorization":"Bearer BQA0K2a4mX9OvzQxUHQ3Ww5KnThO_7hecrcZv_X8ZWPaPDEQnvzzBUENw2hUB-6sDQeh2UzO9q8JlWQCoG1RZSUoEoz3azD7aSWN6tLMHUEdN3qdl-OfNJGzf3EyQ-HAI0wP5CTjWDZja9IcLW0cWn0RRdK6_KrJNA4bdpRtqY7_inAhCfjCU5DMQp7hdAgUDEstPb3L5aJjJs24Sbg66dYflqfHyWdF42mnTEpQ5O1SuJaO40UKsNYjHOBv8EPxjd6nYBcQV-Uy9hPR-mx-U8ttvCdCyH8uhIQNYJZOOy8BisqI0IfQzw8HleMu7p3Vd0k" ]
         Alamofire.request(url, method: .get, parameters: parameters, headers: headers).response(completionHandler:{
             
             response in
